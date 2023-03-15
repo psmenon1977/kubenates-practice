@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  creationTimestamp: null
+  name: mycj
+spec:
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+      name: mycj
+    spec:
+      template:
+        metadata:
+          creationTimestamp: null
+        spec:
+          containers:
+          - command:
+            - /bin/sh
+            - -c
+            - sleep 10
+            image: ubuntu:20.04
+            name: mycj
+            resources: {}
+          restartPolicy: OnFailure
+  schedule: '*/1 * * * 3'
+status: {}

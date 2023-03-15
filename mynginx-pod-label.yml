@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: mynginx
+  name: mynginx
+spec:
+  nodeSelector:
+    hdd: ssd
+  containers:
+  - image: nginx
+    name: mynginx
+    ports:
+    - containerPort: 80
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

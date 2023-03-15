@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: myweb-deploy
+  name: myweb-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myweb-deploy
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: myweb-deploy
+    spec:
+      containers:
+      - image: psmenon1977/simplilearn:hello-1.2
+        name: simplilearn
+        ports:
+        - containerPort: 8080
+        resources: {}
+status: {}
