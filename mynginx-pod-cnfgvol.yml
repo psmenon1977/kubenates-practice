@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: mynginx
+  name: mynginx
+spec:
+  containers:
+  - image: nginx
+    name: mynginx
+    env:
+     - name: dbport
+       valueFrom:
+        configMapKeyRef:
+         name: mycm
+         key: dbport 		
+    volumeMounts:
+      - name: mycfgvol
+        mountPath: /mynginx/config
+    ports:
+    - containerPort: 80
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  volumes:
+  - name: mycfgvol
+    configMap:
+      name: mycm1
+status: {}
